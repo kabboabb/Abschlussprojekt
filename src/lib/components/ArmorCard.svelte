@@ -11,7 +11,7 @@
       <a href={"/armor/" + armor._id}>{armor.name}</a>
     </div>
     <div>
-      Description:{armor.description}
+      Description: {armor.description}
     </div>
     <div>
       Category: {armor.category}
