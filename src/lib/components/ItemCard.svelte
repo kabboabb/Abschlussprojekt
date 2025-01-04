@@ -1,35 +1,31 @@
 <script>
-  let { armors } = $props();
+  let { items } = $props();
 </script>
 
-<div class="armors-card">
+<div class="items-card">
   <div>
-    <img class="img-fluid" src={armors.image} alt={armors.name} />
+    <img class="img-fluid" src={items.image} alt={items.name} />
   </div>
   <div class="details">
     <div class="title">
-      <a href={"/loreDescription/armors/" + armors._id}>{armors.name}</a>
+      <a href={"/loreDescription/" + items._id}>{items.name}</a>
     </div>
     <div>
-      Description: {armors.description}
-    </div>
-    <div>
-      Category: {armors.category}
-    </div>
-    <div>
-      Pthysical: {armors.Phy}
-    </div>
-    <div>
-      Strike: {armors.Strike}
-    </div>
-    <div>
-      Slash: {armors.Slash}
+      <div>
+        <strong>Description: </strong> {items.description}
+      </div>
+      <div>
+        <strong>Type: </strong> {items.type}
+      </div>
+      <div>
+        <strong>Effect: </strong> {items.effect}
+      </div>
     </div>
   </div>
 </div>
 
 <style>
-  .armors-card {
+  .items-card {
     border: 1px solid #555;
     height: 100%;
     background-color: #444;

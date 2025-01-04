@@ -8,7 +8,7 @@
   </div>
   <div class="details">
     <div class="title">
-      <a href={"/weapons/" + weapons._id}>{weapons.name}</a>
+      <a href={"/loreDescription/weapons/" + weapons._id}>{weapons.name}</a>
     </div>
     <div>
       <div>

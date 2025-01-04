@@ -14,7 +14,6 @@
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/loreDescription">Lore & Item Descriptions</a>
         <a class="nav-link" href="/builds">Builds</a>
-        <a class="nav-link" href="/compare">Compare</a>
         <a class="nav-link" href="/create">Create</a>
       </div>
     </div>

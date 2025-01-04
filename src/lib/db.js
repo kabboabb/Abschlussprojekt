@@ -12,22 +12,22 @@ const db = client.db("Eldenring"); // select database
 
 // Get all armors
 async function getArmors() {
-  let armor = [];
+  let armors = [];
   try {
     const collection = db.collection("armor");
     // You can specify a query/filter here
     const query = {};
 
     // Get all objects that match the query
-    armor = await collection.find(query).toArray();
-    armor.forEach((armor) => {
+    armors = await collection.find(query).toArray();
+    armors.forEach((armor) => {
       armor._id = armor._id.toString(); // convert ObjectId to String
     });
   } catch (error) {
     console.log(error);
     // TODO: error handling
   }
-  return armor;
+  return armors;
 }
 
 // Get armor by id
@@ -38,8 +38,8 @@ async function getArmor(id) {
     const query = { _id: new ObjectId(id) }; // filter by id
     armor = await collection.findOne(query);
 
-    if (!movie) {
-      console.log("No movie with id " + id);
+    if (!aromr) {
+      console.log("No armor with id " + id);
       // TODO: errorhandling
     } else {
       armor._id = armor._id.toString(); // convert ObjectId to String
@@ -51,26 +51,6 @@ async function getArmor(id) {
   return armor;
 }
 
-
-// Create armor
-// Example armor object:
-/* 
-{
-  name: "All-knowing Greaves",
-  image: "https://eldenring.fanapis.com/images/armors/...",
-  description: "Greaves set with countless eyes and ears...",
-  category: "Leg Armor",
-  dmgNegation: [
-    { name: "Phy", amount: 7 },
-    { name: "Strike", amount: 6 }
-  ],
-  resistance: [
-    { name: "Immunity", amount: 17 },
-    { name: "Robustness", amount: 28 }
-  ],
-  weight: 6.6
-}
-*/
 async function createArmor(armor) {
   try {
     const collection = db.collection("armor");
@@ -83,20 +63,7 @@ async function createArmor(armor) {
   return null;
 }
 
-// Update armor
-// Example armor object:
-/* 
-{
-  _id: "6630e72c95e12055f661ff13",
-  name: "All-knowing Greaves",
-  image: "https://eldenring.fanapis.com/images/armors/...",
-  description: "Updated description...",
-  category: "Leg Armor",
-  dmgNegation: [...],
-  resistance: [...],
-  weight: 6.6
-}
-*/
+
 // Returns: id of the updated armor or null if it couldn't be updated
 async function updateArmor(armor) {
   try {
@@ -183,21 +150,7 @@ async function getWeapon(id) {
   return weapon;
 }
 
-// Create weapon
-// Example weapon object:
-/* 
-{
-  name: "Blade of Mercy",
-  image: "https://example.com/images/weapons/...",
-  description: "A fast and sharp blade...",
-  category: "Sword",
-  damage: [
-    { name: "Physical", amount: 100 },
-    { name: "Magic", amount: 50 }
-  ],
-  weight: 3.5
-}
-*/
+
 async function createWeapon(weapon) {
   try {
     const collection = db.collection("weapon");
@@ -211,18 +164,6 @@ async function createWeapon(weapon) {
 }
 
 // Update weapon
-// Example weapon object:
-/* 
-{
-  _id: "6630e72c95e12055f661ff13",
-  name: "Blade of Mercy",
-  image: "https://example.com/images/weapons/...",
-  description: "Updated description...",
-  category: "Sword",
-  damage: [...],
-  weight: 3.5
-}
-*/
 // Returns: id of the updated weapon or null if it couldn't be updated
 async function updateWeapon(weapon) {
   try {
@@ -267,6 +208,302 @@ async function deleteWeapon(id) {
   return null;
 }
 
+// Get all NPCs
+async function getNPCs() {
+  let npcs = [];
+  try {
+    const collection = db.collection("npc");
+    // You can specify a query/filter here
+    const query = {};
+
+    // Get all objects that match the query
+    npcs = await collection.find(query).toArray();
+    npcs.forEach((npc) => {
+      npc._id = npc._id.toString(); // convert ObjectId to String
+    });
+  } catch (error) {
+    console.log(error);
+    // TODO: error handling
+  }
+  return npcs;
+}
+
+// Get NPC by id
+async function getNPC(id) {
+  let npc = null;
+  try {
+    const collection = db.collection("npc");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    npc = await collection.findOne(query);
+
+    if (!npc) {
+      console.log("No NPC with id " + id);
+      // TODO: error handling
+    } else {
+      npc._id = npc._id.toString(); // convert ObjectId to String
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return npc;
+}
+
+// Create NPC
+// Example NPC object:
+async function createNPC(npc) {
+  try {
+    const collection = db.collection("npc");
+    const result = await collection.insertOne(npc);
+    return result.insertedId.toString(); // convert ObjectId to String
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// Update NPC
+// Returns: id of the updated NPC or null if it couldn't be updated
+async function updateNPC(npc) {
+  try {
+    let id = npc._id;
+    delete npc._id; // delete the _id from the object because the _id cannot be updated
+    const collection = db.collection("npc");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    const result = await collection.updateOne(query, { $set: npc });
+
+    if (result.matchedCount === 0) {
+      console.log("No NPC with id " + id);
+      // TODO: error handling
+    } else {
+      console.log("NPC with id " + id + " has been updated.");
+      return id;
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// Delete NPC by id
+// Returns: id of the deleted NPC or null if it couldn't be deleted
+async function deleteNPC(id) {
+  try {
+    const collection = db.collection("npc");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    const result = await collection.deleteOne(query);
+
+    if (result.deletedCount === 0) {
+      console.log("No NPC with id " + id);
+    } else {
+      console.log("NPC with id " + id + " has been successfully deleted.");
+      return id;
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+// Get all items
+async function getItems() {
+  let items = [];
+  try {
+    const collection = db.collection("items");
+    // You can specify a query/filter here
+    const query = {};
+
+    // Get all objects that match the query
+    items = await collection.find(query).toArray();
+    items.forEach((item) => {
+      item._id = item._id.toString(); // convert ObjectId to String
+    });
+  } catch (error) {
+    console.log(error);
+    // TODO: error handling
+  }
+  return items;
+}
+
+// Get item by id
+async function getItem(id) {
+  let item = null;
+  try {
+    const collection = db.collection("items");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    item = await collection.findOne(query);
+
+    if (!item) {
+      console.log("No item with id " + id);
+      // TODO: error handling
+    } else {
+      item._id = item._id.toString(); // convert ObjectId to String
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return item;
+}
+
+// Create item
+async function createItem(item) {
+  try {
+    const collection = db.collection("items");
+    const result = await collection.insertOne(item);
+    return result.insertedId.toString(); // convert ObjectId to String
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// Update item
+async function updateItem(item) {
+  try {
+    let id = item._id;
+    delete item._id; // delete the _id from the object because the _id cannot be updated
+    const collection = db.collection("items");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    const result = await collection.updateOne(query, { $set: item });
+
+    if (result.matchedCount === 0) {
+      console.log("No item with id " + id);
+      // TODO: error handling
+    } else {
+      console.log("Item with id " + id + " has been updated.");
+      return id;
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// Delete item by id
+// Returns: id of the deleted item or null if it couldn't be deleted
+async function deleteItem(id) {
+  try {
+    const collection = db.collection("items");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    const result = await collection.deleteOne(query);
+
+    if (result.deletedCount === 0) {
+      console.log("No item with id " + id);
+    } else {
+      console.log("Item with id " + id + " has been successfully deleted.");
+      return id;
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// Get all bosses
+async function getBosses() {
+  let bosses = [];
+  try {
+    const collection = db.collection("bosses");
+    // You can specify a query/filter here
+    const query = {};
+
+    // Get all objects that match the query
+    bosses = await collection.find(query).toArray();
+    bosses.forEach((boss) => {
+      boss._id = boss._id.toString(); // convert ObjectId to String
+    });
+  } catch (error) {
+    console.log(error);
+    // TODO: error handling
+  }
+  return bosses;
+}
+
+// Get boss by id
+async function getBoss(id) {
+  let boss = null;
+  try {
+    const collection = db.collection("bosses");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    boss = await collection.findOne(query);
+
+    if (!boss) {
+      console.log("No boss with id " + id);
+      // TODO: error handling
+    } else {
+      boss._id = boss._id.toString(); // convert ObjectId to String
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return boss;
+}
+
+// Create boss
+async function createBoss(boss) {
+  try {
+    const collection = db.collection("bosses");
+    const result = await collection.insertOne(boss);
+    return result.insertedId.toString(); // convert ObjectId to String
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// Update boss
+// Returns: id of the updated boss or null if it couldn't be updated
+async function updateBoss(boss) {
+  try {
+    let id = boss._id;
+    delete boss._id; // delete the _id from the object because the _id cannot be updated
+    const collection = db.collection("bosses");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    const result = await collection.updateOne(query, { $set: boss });
+
+    if (result.matchedCount === 0) {
+      console.log("No boss with id " + id);
+      // TODO: error handling
+    } else {
+      console.log("Boss with id " + id + " has been updated.");
+      return id;
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// Delete boss by id
+// Returns: id of the deleted boss or null if it couldn't be deleted
+async function deleteBoss(id) {
+  try {
+    const collection = db.collection("bosses");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    const result = await collection.deleteOne(query);
+
+    if (result.deletedCount === 0) {
+      console.log("No boss with id " + id);
+    } else {
+      console.log("Boss with id " + id + " has been successfully deleted.");
+      return id;
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
 // Export all functions so they can be used in other files
 export default {
   getArmors,
@@ -279,5 +516,20 @@ export default {
   createWeapon,
   updateWeapon,
   deleteWeapon,
+  getNPCs,
+  getNPC,
+  createNPC,
+  updateNPC,
+  deleteNPC,
+  getItems,
+  getItem,
+  createItem,
+  updateItem,
+  deleteItem,
+  getBosses,
+  getBoss,
+  createBoss,
+  updateBoss,
+  deleteBoss,
 };
 
