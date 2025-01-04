@@ -1,18 +1,15 @@
 <script>
     let { data } = $props();
+    let npcs = data.npcs;
 </script>
 
 <a href="/loreDescription">Back</a>
-{#if data.weapons}
-    <div>
-        <h1>{data.weapons.name}</h1>
-    </div>
-{:else if data.armors}
-    <div>
-        <h1>{data.armors.name}</h1>
-    </div>
-{:else if data.npcs}
-    <div>
-        <h1>{data.npcs.name}</h1>
-    </div>
-{/if}
+<div>
+    <img class="img-fluid" src={npcs.image} alt={npcs.name} />
+  </div>
+<div>
+    <strong>Location: </strong> {npcs.location}
+  </div>
+  <div>
+    <strong>Role: </strong> {npcs.role}
+  </div>

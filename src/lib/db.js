@@ -10,7 +10,7 @@ const db = client.db("Eldenring"); // select database
 // Armors
 //////////////////////////////////////////
 
-// Get all armors
+// Get all weapons
 async function getArmors() {
   let armors = [];
   try {
@@ -30,7 +30,7 @@ async function getArmors() {
   return armors;
 }
 
-// Get armor by id
+// Get weapon by id
 async function getArmor(id) {
   let armor = null;
   try {
@@ -38,14 +38,14 @@ async function getArmor(id) {
     const query = { _id: new ObjectId(id) }; // filter by id
     armor = await collection.findOne(query);
 
-    if (!aromr) {
-      console.log("No armor with id " + id);
-      // TODO: errorhandling
+    if (!armor) {
+      console.log("No weapon with id " + id);
+      // TODO: error handling
     } else {
       armor._id = armor._id.toString(); // convert ObjectId to String
     }
   } catch (error) {
-    // TODO: errorhandling
+    // TODO: error handling
     console.log(error.message);
   }
   return armor;

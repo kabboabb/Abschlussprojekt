@@ -13,18 +13,6 @@
     <div>
       Description: {armors.description}
     </div>
-    <div>
-      Category: {armors.category}
-    </div>
-    <div>
-      Pthysical: {armors.Phy}
-    </div>
-    <div>
-      Strike: {armors.Strike}
-    </div>
-    <div>
-      Slash: {armors.Slash}
-    </div>
   </div>
 </div>
 

@@ -8,23 +8,11 @@
   </div>
   <div class="details">
     <div class="title">
-      <a href={"/loreDescription/" + bosses._id}>{bosses.name}</a>
+      <a href={"/loreDescription/bosses/" + bosses._id}>{bosses.name}</a>
     </div>
-    <div>
-      <div>
-        <strong>Region: </strong> {bosses.region}
-      </div>
+    <div> 
       <div>
         <strong>Description: </strong> {bosses.description}
-      </div>
-      <div>
-        <strong>Location: </strong> {bosses.location}
-      </div>
-      <div>
-        <strong>Drops: </strong> {bosses.drops}
-      </div>
-      <div>
-        <strong>Health Points: </strong> {bosses.healthPoints}
       </div>
     </div>
   </div>

@@ -8,17 +8,11 @@
   </div>
   <div class="details">
     <div class="title">
-      <a href={"/loreDescription/" + items._id}>{items.name}</a>
+      <a href={"/loreDescription/items/" + items._id}>{items.name}</a>
     </div>
     <div>
       <div>
         <strong>Description: </strong> {items.description}
-      </div>
-      <div>
-        <strong>Type: </strong> {items.type}
-      </div>
-      <div>
-        <strong>Effect: </strong> {items.effect}
       </div>
     </div>
   </div>

@@ -1,18 +1,80 @@
 <script>
     let { data } = $props();
+    let weapons = data.weapons;
 </script>
 
 <a href="/loreDescription">Back</a>
-{#if data.weapons}
+<div>
     <div>
-        <h1>{data.weapons.name}</h1>
-    </div>
-{:else if data.armors}
+        <img class="img-fluid" src={weapons.image} alt={weapons.name} />
+      </div>
+    <strong>Description: </strong> {weapons.description}
+  </div>
+  <div>
+    <strong>Category: </strong> {weapons.category}
+  </div>
+  <div>
+    <strong>Weight: </strong> {weapons.weight}
+  </div>
+  <div>
+    <strong>Physical: </strong> {weapons.Phy}
+  </div>
+  <div>
+    <strong>Magic: </strong> {weapons.Mag}
+  </div>
+  <div>
+    <strong>Fire: </strong> {weapons.Fire}
+  </div>
+  <div>
+    <strong>Lightning: </strong> {weapons.Ligt}
+  </div>
+  <div>
+    <strong>Holy: </strong> {weapons.Holy}
+  </div>
+  <div>
+    <strong>Critical: </strong> {weapons.Crit}
+  </div>
+  <div>
+    <strong>Defence Physical: </strong> {weapons['Defence Phy']}
+  </div>
+  <div>
+    <strong>Defence Magic: </strong> {weapons['Defence Mag']}
+  </div>
+  <div>
+    <strong>Defence Fire: </strong> {weapons['Defence Fire']}
+  </div>
+  <div>
+    <strong>Defence Lightning: </strong> {weapons['Defence Ligt']}
+  </div>
+  <div>
+    <strong>Defence Holy: </strong> {weapons['Defence Holy']}
+  </div>
+  <div>
+    <strong>Defence Critical: </strong> {weapons['Defence Crit']}
+  </div>
+  {#if weapons.scalesStr}
     <div>
-        <h1>{data.armors.name}</h1>
+      <strong>Strength Scaling: </strong> {weapons.scalesStr}
     </div>
-{:else if data.npcs}
+  {/if}
+  {#if weapons.scalesDex}
     <div>
-        <h1>{data.npcs.name}</h1>
+      <strong>Dexterity Scaling: </strong> {weapons.scalesDex}
     </div>
-{/if}
+  {/if}
+  {#if weapons.scalesInt}
+    <div>
+      <strong>Intelligence Scaling: </strong> {weapons.scalesInt}
+    </div>
+  {/if}
+  {#if weapons.scalesArc}
+    <div>
+      <strong>Arcane Scaling: </strong> {weapons.scalesArc}
+    </div>
+  {/if}
+  {#if weapons.scalesFai}
+    <div>
+      <strong>Faith Scaling: </strong> {weapons.scalesFai}
+    </div>
+  {/if}
+  
