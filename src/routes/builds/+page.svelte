@@ -1,6 +1,8 @@
 <script>
   let { data } = $props();
 
+  let deaktiviert = $state(true);
+
   // State to hold the selected armors and weapon
   let selectedHelm = $state(null);
   let selectedLegArmor = $state(null);
@@ -37,60 +39,76 @@
   let weaponScalesArc = $state("");
   let weaponScalesFai = $state("");
 
-
-
-
   // Function to calculate total armor stats
   function calculateTotalStats() {
     // Reset totals for armor
-    weight = phy = strike = slash = pierce = magic = fire = ligt = holy = immunity = robustness = focus = vitality = poise = 0;
+    weight =
+      phy =
+      strike =
+      slash =
+      pierce =
+      magic =
+      fire =
+      ligt =
+      holy =
+      immunity =
+      robustness =
+      focus =
+      vitality =
+      poise =
+        0;
 
     // Array of selected armors
-    const armors = [selectedHelm, selectedLegArmor, selectedChestArmor, selectedGauntlets];
+    const armors = [
+      selectedHelm,
+      selectedLegArmor,
+      selectedChestArmor,
+      selectedGauntlets,
+    ];
 
     // Add stats of each selected armor
     armors.forEach((armor) => {
       if (armor) {
-        weight +=armor.weight;
+        weight += armor.weight;
         phy += armor.Phy;
-        strike +=armor.Strike;
-        slash +=armor.Slash;
+        strike += armor.Strike;
+        slash += armor.Slash;
         pierce += armor.Pierce;
-        magic +=armor.Magic;
+        magic += armor.Magic;
         fire += armor.Fire;
         ligt += armor.Ligt;
-        holy +=armor.Holy;
+        holy += armor.Holy;
         immunity += armor.Immunity;
-        robustness +=armor.Robustness;
+        robustness += armor.Robustness;
         focus += armor.Focus;
-        vitality +=armor.Vitality;
-        poise +=armor.Poise;
+        vitality += armor.Vitality;
+        poise += armor.Poise;
       }
     });
   }
 
   // Function to update weapon stats
-  function updateWeaponStats(weaponId) {
-    const weapon = data.weapons.find((w) => w._id === weaponId);
+  function updateWeaponStats(weaponName) {
+    const weapon = data.weapons.find((weapon) => weapon.name === weaponName);
     selectedWeapon = weapon;
     if (weapon) {
-      weaponPhy =weapon.Phy;
-      weaponMag =weapon.Mag;
-      weaponFire =weapon.Fire;
+      weaponPhy = weapon.Phy;
+      weaponMag = weapon.Mag;
+      weaponFire = weapon.Fire;
       weaponLigt = weapon.Ligt;
-      weaponHoly =weapon.Holy;
+      weaponHoly = weapon.Holy;
       weaponCrit = weapon.Crit;
-      weaponScalesStr = weapon.scalesStr|| "does not scale";
-      weaponScalesDex = weapon.scalesDex|| "does not scale";
-      weaponScalesArc = weapon.scalesArc|| "does not scale";
-      weaponScalesInt = weapon.scalesInt|| "does not scale";
-      weaponScalesFai = weapon.scalesFai|| "does not scale";
+      weaponScalesStr = weapon.scalesStr || "does not scale";
+      weaponScalesDex = weapon.scalesDex || "does not scale";
+      weaponScalesArc = weapon.scalesArc || "does not scale";
+      weaponScalesInt = weapon.scalesInt || "does not scale";
+      weaponScalesFai = weapon.scalesFai || "does not scale";
     }
   }
 
   // Update selected armor when a dropdown value changes
-  function updateSelectedArmor(category, armorId) {
-    const armor = data.armor.find((armor) => armor._id === armorId);
+  function updateSelectedArmor(category, armorName) {
+    const armor = data.armor.find((armor) => armor.name === armorName);
     if (category === "Helm") selectedHelm = armor;
     if (category === "Leg Armor") selectedLegArmor = armor;
     if (category === "Chest Armor") selectedChestArmor = armor;
@@ -101,93 +119,140 @@
   }
 </script>
 
-<div>
-  <h2>Select Helm</h2>
-  <select onchange={(e) => updateSelectedArmor("Helm", e.target.value)}>
-    <option value="" disabled selected>Select an armor</option>
-    {#each data.armor as armor (armor._id)}
-      {#if armor.category === "Helm"}
-        <option value={armor._id}>{armor.name}</option>
-      {/if}
-    {/each}
-  </select>
-
-  <h2>Select Leg Armor</h2>
-  <select onchange={(e) => updateSelectedArmor("Leg Armor", e.target.value)}>
-    <option value="" disabled selected>Select an armor</option>
-    {#each data.armor as armor (armor._id)}
-      {#if armor.category === "Leg Armor"}
-        <option value={armor._id}>{armor.name}</option>
-      {/if}
-    {/each}
-  </select>
-
-  <h2>Select Chest Armor</h2>
-  <select onchange={(e) => updateSelectedArmor("Chest Armor", e.target.value)}>
-    <option value="" disabled selected>Select an armor</option>
-    {#each data.armor as armor (armor._id)}
-      {#if armor.category === "Chest Armor"}
-        <option value={armor._id}>{armor.name}</option>
-      {/if}
-    {/each}
-  </select>
-
-  <h2>Select Gauntlet Armor</h2>
-  <select onchange={(e) => updateSelectedArmor("Gauntlets", e.target.value)}>
-    <option value="" disabled selected>Select an armor</option>
-    {#each data.armor as armor (armor._id)}
-      {#if armor.category === "Gauntlets"}
-        <option value={armor._id}>{armor.name}</option>
-      {/if}
-    {/each}
-  </select>
-
-  <h2>Select Your Weapon</h2>
-  <select onchange={(e) => updateWeaponStats(e.target.value)}>
-    <option value="" disabled selected>Select a weapon</option>
-    {#each data.weapons as weapon}
-      <option value={weapon._id}>{weapon.name}</option>
-    {/each}
-  </select>
-
-  <h2>Total Armor Stats</h2>
-  <div>
-    {#if selectedHelm|| selectedLegArmor|| selectedChestArmor|| selectedGauntlets}
-    <p>Weight: {weight}</p>
-    <p>Phy: {phy}</p>
-    <p>Strike: {strike}</p>
-    <p>Slash: {slash}</p>
-    <p>Pierce: {pierce}</p>
-    <p>Magic: {magic}</p>
-    <p>Fire: {fire}</p>
-    <p>Ligt: {ligt}</p>
-    <p>Holy: {holy}</p>
-    <p>Immunity: {immunity}</p>
-    <p>Robustness: {robustness}</p>
-    <p>Focus: {focus}</p>
-    <p>Vitality: {vitality}</p>
-    <p>Poise: {poise}</p>
-    {:else}
-    <p>Please select a weapon to see its stats.</p>
-  {/if}
-  </div>
-
-  <h2>Selected Weapon Stats</h2>
-  {#if selectedWeapon}
-    <div>
-      <p>Phy: {weaponPhy}</p>
-      <p>Mag: {weaponMag}</p>
-      <p>Fire: {weaponFire}</p>
-      <p>Ligt: {weaponLigt}</p>
-      <p>Holy: {weaponHoly}</p>
-      <p>Crit: {weaponCrit}</p>
-      <p>Scales Str: {weaponScalesStr}</p>
-      <p>Scales Dex: {weaponScalesDex}</p>
-      <p>Scales Int: {weaponScalesInt}</p>
-      <p>Scales Arc: {weaponScalesArc}</p>
-      <p>Scales Fai: {weaponScalesFai}</p>
-    </div>
-  {:else}
-    <p>Please select a weapon to see its stats.</p>
-  {/if}
+<form method="Post" action="?/create">
+  <div class="mb-3">
+    <label for="inputName" class="form-label">Build Name</label>
+    <input
+        name="buildName"
+        type="text"
+        id="inputName"
+        class="form-control"
+        placeholder="Build Name"
+    />
 </div>
+  <div class="container my-4">
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="text-center">Select Helm</h2>
+        <select
+          class="form-select mb-3" name="helm"
+          onchange={(e) => updateSelectedArmor("Helm", e.target.value)}
+        >
+          <option value="" disabled selected>Select an armor</option>
+          {#each data.armor as armor (armor._id)}
+            {#if armor.category === "Helm"}
+              <option value={armor.name}>{armor.name}</option>
+            {/if}
+          {/each}
+        </select>
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-center">Select Leg Armor</h2>
+        <select
+          class="form-select mb-3" name = "legArmor"
+          onchange={(e) => updateSelectedArmor("Leg Armor", e.target.value)}
+        >
+          <option value="" disabled selected>Select an armor</option>
+          {#each data.armor as armor (armor._id)}
+            {#if armor.category === "Leg Armor"}
+              <option value={armor.name}>{armor.name}</option>
+            {/if}
+          {/each}
+        </select>
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-center">Select Chest Armor</h2>
+        <select
+          class="form-select mb-3" name = "chestArmor"
+          onchange={(e) => updateSelectedArmor("Chest Armor", e.target.value)}
+        >
+          <option value="" disabled selected>Select an armor</option>
+          {#each data.armor as armor (armor._id)}
+            {#if armor.category === "Chest Armor"}
+              <option value={armor.name}>{armor.name}</option>
+            {/if}
+          {/each}
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <h2 class="text-center">Select Gauntlet Armor</h2>
+        <select
+          class="form-select mb-3" name = "gauntletArmor"
+          onchange={(e) => updateSelectedArmor("Gauntlets", e.target.value)}
+        >
+          <option value="" disabled selected>Select an armor</option>
+          {#each data.armor as armor (armor._id)}
+            {#if armor.category === "Gauntlets"}
+              <option value={armor.name}>{armor.name}</option>
+            {/if}
+          {/each}
+        </select>
+      </div>
+      <div class="col-md-4">
+        <h2 class="text-center">Select Your Weapon</h2>
+        <select
+          class="form-select mb-3" name = "weapon"
+          onchange={(e) => updateWeaponStats(e.target.value)}
+        >
+          <option value="" disabled selected>Select a weapon</option>
+          {#each data.weapons as weapon}
+            <option value={weapon.name}>{weapon.name}</option>
+          {/each}
+        </select>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="border p-3">
+          <h2 class="text-center">Total Armor Stats</h2>
+          {#if selectedHelm || selectedLegArmor || selectedChestArmor || selectedGauntlets}
+            <p>Weight: </p><input type="number" name="weight" value={Math.round(weight)} readonly style="width: 100px;">
+            <p>Physical: </p><input type="number" name="phy" value={phy} readonly style="width: 100px;">
+            <p>Strike:</p><input type="number" name="strike" value={strike} readonly style="width: 100px;">
+            <p>Slash:</p><input type="number" name="slash" value={slash} readonly style="width: 100px;">
+            <p>Pierce:</p><input type="number" name="pierce" value={pierce} readonly style="width: 100px;">
+            <p>Magic:</p><input type="number" name="magic" value={magic} readonly style="width: 100px;">
+            <p>Fire:</p><input type="number" name="fire" value={fire} readonly style="width: 100px;">
+            <p>Light:</p><input type="number" name="ligt" value={ligt} readonly style="width: 100px;">
+            <p>Holy:</p><input type="number" name="holy" value={holy} readonly style="width: 100px;">
+            <p>Immunity:</p><input type="number" name="immunity" value={immunity} readonly style="width: 100px;">
+            <p>Robustness:</p><input type="number" name="robustness" value={robustness} readonly style="width: 100px;">
+            <p>Focus:</p><input type="number" name="focus" value={focus} readonly style="width: 100px;">
+            <p>Vitality:</p><input type="number" name="vitality" value={vitality} readonly style="width: 100px;">
+            <p>Poise:</p><input type="number" name="poise" value={poise} readonly style="width: 100px;">
+          {:else}
+            <p>Please select a weapon to see its stats.</p>
+          {/if}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="border p-3">
+          <h2 class="text-center">Selected Weapon Stats</h2>
+          {#if selectedWeapon}
+            <p>Physical: </p><input type="number" name="weaponPhy" value={weaponPhy} readonly style="width: 100px;">
+            <p>Magic: </p><input type="number" name="weaponMag" value={weaponMag} readonly style="width: 100px;">
+            <p>Fire: </p><input type="number" name="weaponFire" value={weaponFire} readonly style="width: 100px;">
+            <p>Light: </p><input type="number" name="weaponLigt" value={weaponLigt} readonly style="width: 100px;">
+            <p>Holy: </p><input type="number" name="weaponHoly" value={weaponHoly} readonly style="width: 100px;">
+            <p>Critical: </p><input type="number" name="weaponCrit" value={weaponCrit} readonly style="width: 100px;">
+            <p>Strength Scale: </p><input type="text" name="weaponScalesStr" value={weaponScalesStr} readonly style="width: 100px;">
+            <p>Dexterity Scale: </p><input type="text" name="weaponScalesDex" value={weaponScalesDex} readonly style="width: 100px;">
+            <p>Intelligence Scale: </p><input type="text" name="weaponScalesInt" value={weaponScalesInt} readonly style="width: 100px;">
+            <p>Arcane Scale: </p><input type="text" name="weaponScalesArc" value={weaponScalesArc} readonly style="width: 100px;">
+            <p>Faith Scale: </p><input type="text" name="weaponScalesFai" value={weaponScalesFai} readonly style="width: 100px;">
+          {:else}
+            <p>Please select a weapon to see its stats.</p>
+          {/if}
+        </div>
+      </div>
+    </div>
+    <div >
+    <button type="submit">Save Build</button>
+  </div>
+  </div>
+</form>

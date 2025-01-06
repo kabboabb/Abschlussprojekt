@@ -29,16 +29,11 @@
   }
 </script>
 
-<p><i>Daten und Bilder generiert mit ChatGPT und DALL-E</i></p>
-<a
-  style="margin-bottom: 20px;"
-  class="btn btn-primary"
-  href="movies/create"
-  role="button">Add New Movie</a
->
+<p><i>Data and Images from Kaggle</i></p>
 
 <!-- Filter Options -->
 <div style="margin-bottom: 20px;">
+  <a class="btn btn-primary" href="../create" role="button">Add New Item</a>
   <button onclick={() => setFilter('all')} class="btn btn-secondary">Show All</button>
   <button onclick={() => setFilter('weapons')} class="btn btn-secondary">Weapons</button>
   <button onclick={() => setFilter('armors')} class="btn btn-secondary">Armors</button>

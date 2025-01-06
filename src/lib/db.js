@@ -504,6 +504,106 @@ async function deleteBoss(id) {
   return null;
 }
 
+// Get all builds
+async function getBuilds() {
+  let builds = [];
+  try {
+    const collection = db.collection("builds");
+    // You can specify a query/filter here
+    const query = {};
+
+    // Get all objects that match the query
+    builds = await collection.find(query).toArray();
+    builds.forEach((build) => {
+      build._id = build._id.toString(); // convert ObjectId to String
+    });
+  } catch (error) {
+    console.log(error);
+    // TODO: error handling
+  }
+  return builds;
+}
+
+// Get build by id
+async function getBuild(id) {
+  let build = null;
+  try {
+    const collection = db.collection("builds");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    build = await collection.findOne(query);
+
+    if (!build) {
+      console.log("No build with id " + id);
+      // TODO: error handling
+    } else {
+      build._id = build._id.toString(); // convert ObjectId to String
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return build;
+}
+
+// Create build
+async function createBuild(build) {
+  try {
+    const collection = db.collection("builds");
+    const result = await collection.insertOne(build);
+    return result.insertedId.toString(); // convert ObjectId to String
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// Update build
+// Returns: id of the updated build or null if it couldn't be updated
+async function updateBuild(build) {
+  try {
+    let id = build._id;
+    delete build._id; // delete the _id from the object because the _id cannot be updated
+    const collection = db.collection("builds");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    const result = await collection.updateOne(query, { $set: build });
+
+    if (result.matchedCount === 0) {
+      console.log("No build with id " + id);
+      // TODO: error handling
+    } else {
+      console.log("Build with id " + id + " has been updated.");
+      return id;
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+// Delete build by id
+// Returns: id of the deleted build or null if it couldn't be deleted
+async function deleteBuild(id) {
+  try {
+    const collection = db.collection("builds");
+    const query = { _id: new ObjectId(id) }; // filter by id
+    const result = await collection.deleteOne(query);
+
+    if (result.deletedCount === 0) {
+      console.log("No build with id " + id);
+    } else {
+      console.log("Build with id " + id + " has been successfully deleted.");
+      return id;
+    }
+  } catch (error) {
+    // TODO: error handling
+    console.log(error.message);
+  }
+  return null;
+}
+
+
 // Export all functions so they can be used in other files
 export default {
   getArmors,
@@ -531,5 +631,10 @@ export default {
   createBoss,
   updateBoss,
   deleteBoss,
+  getBuilds,
+  getBuild,
+  createBuild,
+  updateBuild,
+  deleteBuild,
 };
 

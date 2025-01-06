@@ -34,7 +34,7 @@ body {
 }
 
 .container .row .col-md-6 {
-  display: flex;
+  display: 200px;
 }
 
 .lore-page {

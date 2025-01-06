@@ -13,8 +13,9 @@
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/loreDescription">Lore & Item Descriptions</a>
-        <a class="nav-link" href="/builds">Builds</a>
+        <a class="nav-link" href="/builds">Builds Creation</a>
         <a class="nav-link" href="/create">Create</a>
+        <a class="nav-link" href="/myBuilds">My Builds</a>
       </div>
     </div>
   </div>

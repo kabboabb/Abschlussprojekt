@@ -39,7 +39,7 @@
       <div class="card feature-card">
         <img src="/titlepagebuilds.jpg" class="card-img-top" alt="Build" />
         <div class="card-body text-center">
-          <h5 class="card-title">Create and Edit Builds</h5>
+          <h5 class="card-title">Create Builds</h5>
           <p class="card-text">
             Craft your ultimate build by selecting armor and weapons, and view
             combined stats.
@@ -53,11 +53,11 @@
       <div class="card feature-card">
         <img src="/titlepagecomparison.jpg" class="card-img-top" alt="Compare" />
         <div class="card-body text-center">
-          <h5 class="card-title">Compare Builds to Enemies</h5>
+          <h5 class="card-title">Explore Your Builds Catalog</h5>
           <p class="card-text">
-            Test the effectiveness of your builds against powerful foes.
+            Compare your builds and see how they stack up against each other.
           </p>
-          <a href="/compare" class="btn btn-secondary">Compare Now</a>
+          <a href="/mybuilds" class="btn btn-secondary">See Build</a>
         </div>
       </div>
     </div>
