@@ -16,6 +16,11 @@
       </div>
     </div>
   </div>
+  <form method="post" action="?/delete">
+    <input type="hidden" name="id" value={items._id} />
+    <input type="hidden" name="collection" value="items" />
+    <button class="btn btn-danger">Delete</button>
+  </form>
 </div>
 
 <style>
