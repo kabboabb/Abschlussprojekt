@@ -4,7 +4,7 @@
 
 <div class="builds-card">
   <div>
-    <img class="img-fluid" src="/genericbuild.jpg" alt={builds.name} />
+    <img class="img-fluid" src={builds.image} alt={builds.name} />
   </div>
   <div class="details">
     <div class="title">

@@ -52,6 +52,7 @@ async function getArmor(id) {
 }
 
 async function createArmor(armor) {
+  armor.image = "/genericarmor.jpg";
   try {
     const collection = db.collection("armor");
     const result = await collection.insertOne(armor);
@@ -152,6 +153,7 @@ async function getWeapon(id) {
 
 
 async function createWeapon(weapon) {
+  weapon.image = "/genericweapon.jpg";
   try {
     const collection = db.collection("weapon");
     const result = await collection.insertOne(weapon);
@@ -252,6 +254,7 @@ async function getNPC(id) {
 // Create NPC
 // Example NPC object:
 async function createNPC(npc) {
+  npc.image = "/genericnpc.jpg";
   try {
     const collection = db.collection("npc");
     const result = await collection.insertOne(npc);
@@ -350,6 +353,7 @@ async function getItem(id) {
 
 // Create item
 async function createItem(item) {
+  item.image = "/genericitem.jpg";
   try {
     const collection = db.collection("items");
     const result = await collection.insertOne(item);
@@ -448,6 +452,7 @@ async function getBoss(id) {
 
 // Create boss
 async function createBoss(boss) {
+  boss.image = "/genericboss.jpg";
   try {
     const collection = db.collection("bosses");
     const result = await collection.insertOne(boss);
@@ -547,6 +552,7 @@ async function getBuild(id) {
 
 // Create build
 async function createBuild(build) {
+  build.image = "/genericbuild.jpg";
   try {
     const collection = db.collection("builds");
     const result = await collection.insertOne(build);
