@@ -6,7 +6,7 @@
 
 <h1>Explore Your Builds</h1>
 
-<p><i> Bilder generiert mit ChatGPT und DALL-E</i></p>
+<p><i> Image generated with ChatGPT and DALL-E</i></p>
 <a
   style="margin-bottom: 20px;"
   class="btn btn-primary"

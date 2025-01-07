@@ -26,16 +26,16 @@
   }
 </script>
 <h1>Explore the Lore and get to know your Stuff</h1>
-<p><i>Data and Images from Kaggle</i></p>
+<p><i>Data and Images are from Kaggle, new Entry-Images are from ChatGPT</i></p>
 
 <div style="margin-bottom: 20px;">
   <a class="btn btn-primary" href="../create" role="button">Add New Entry</a>
-  <button onclick={() => setFilter('all')} class="btn btn-secondary">Show All</button>
-  <button onclick={() => setFilter('weapons')} class="btn btn-secondary">Weapons</button>
-  <button onclick={() => setFilter('armors')} class="btn btn-secondary">Armors</button>
-  <button onclick={() => setFilter('bosses')} class="btn btn-secondary">Bosses</button>
-  <button onclick={() => setFilter('npcs')} class="btn btn-secondary">NPCs</button>
-  <button onclick={() => setFilter('items')} class="btn btn-secondary">Items</button>
+  <button onclick={() => setFilter('all')} class="btn btn-secondary {selectedFilter === 'all' ? 'btn-light' : ''}">Show All</button>
+  <button onclick={() => setFilter('weapons')} class="btn btn-secondary {selectedFilter === 'weapons' ? 'btn-light' : ''}">Weapons</button>
+  <button onclick={() => setFilter('armors')} class="btn btn-secondary {selectedFilter === 'armors' ? 'btn-light' : ''}">Armors</button>
+  <button onclick={() => setFilter('bosses')} class="btn btn-secondary {selectedFilter === 'bosses' ? 'btn-light' : ''}">Bosses</button>
+  <button onclick={() => setFilter('npcs')} class="btn btn-secondary {selectedFilter === 'npcs' ? 'btn-light' : ''}">NPCs</button>
+  <button onclick={() => setFilter('items')} class="btn btn-secondary {selectedFilter === 'items' ? 'btn-light' : ''}">Items</button>
 </div>
 
 <div style="margin-bottom: 20px;">
