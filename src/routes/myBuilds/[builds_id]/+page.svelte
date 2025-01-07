@@ -9,7 +9,7 @@
       </div>
       <div class="card-body">
           <div class="text-center">
-              <img class="img" src="/genericbuild.jpg" alt={builds.name} />
+            <img class="img" src="/genericbuild.jpg" alt={builds.name} />
           </div>
           <ul class="list-group list-group-flush">
               <li class="list-group-item"><strong>Weight:</strong> {builds.weight}</li>
@@ -43,3 +43,9 @@
   </div>
   
   <a href="/loreDescription" class="btn btn-primary mb-4">Back</a>
+
+    <style>
+        .img {
+            width: 400px;
+        }
+    </style>
