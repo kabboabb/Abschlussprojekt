@@ -2,6 +2,8 @@ import db from "$lib/db";
 
 export const actions = {
     create: async ({ request }) => {
+
+    try {
         let data = await request.formData();
         console.log(data);
         let collection = data.get("entryType");
@@ -82,6 +84,10 @@ export const actions = {
             }
             await db.createItem(items);
         }
-
+        return {success: true};
+        
+    } catch (error) {
+        return {success: false, error};
     }
+}
 };

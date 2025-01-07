@@ -1,16 +1,12 @@
 <script>
-  let { data } = $props();
+  let { data, form } = $props();
 
-  let deaktiviert = $state(true);
-
-  // State to hold the selected armors and weapon
   let selectedHelm = $state(null);
   let selectedLegArmor = $state(null);
   let selectedChestArmor = $state(null);
   let selectedGauntlets = $state(null);
   let selectedWeapon = $state(null);
 
-  // Define individual stat variables for armor
   let weight = $state(0);
   let phy = $state(0);
   let strike = $state(0);
@@ -26,7 +22,6 @@
   let vitality = $state(0);
   let poise = $state(0);
 
-  // Define individual stat variables for weapon
   let weaponPhy = $state(0);
   let weaponMag = $state(0);
   let weaponFire = $state(0);
@@ -39,9 +34,7 @@
   let weaponScalesArc = $state("");
   let weaponScalesFai = $state("");
 
-  // Function to calculate total armor stats
   function calculateTotalStats() {
-    // Reset totals for armor
     weight =
       phy =
       strike =
@@ -58,7 +51,6 @@
       poise =
         0;
 
-    // Array of selected armors
     const armors = [
       selectedHelm,
       selectedLegArmor,
@@ -66,7 +58,6 @@
       selectedGauntlets,
     ];
 
-    // Add stats of each selected armor
     armors.forEach((armor) => {
       if (armor) {
         weight += armor.weight;
@@ -87,7 +78,6 @@
     });
   }
 
-  // Function to update weapon stats
   function updateWeaponStats(weaponName) {
     const weapon = data.weapons.find((weapon) => weapon.name === weaponName);
     selectedWeapon = weapon;
@@ -106,7 +96,6 @@
     }
   }
 
-  // Update selected armor when a dropdown value changes
   function updateSelectedArmor(category, armorName) {
     const armor = data.armor.find((armor) => armor.name === armorName);
     if (category === "Helm") selectedHelm = armor;
@@ -114,7 +103,6 @@
     if (category === "Chest Armor") selectedChestArmor = armor;
     if (category === "Gauntlets") selectedGauntlets = armor;
 
-    // Recalculate totals after selecting armor
     calculateTotalStats();
   }
 </script>
@@ -258,6 +246,16 @@
   </div>
   </div>
 </form>
+
+{#if form?.success}
+  <div class="alert alert-success" role="alert">
+    Entry successfully created!
+  </div>
+{:else if form?.error}
+  <div class="alert alert-danger" role="alert">
+    {form.error.message}
+  </div>
+{/if}
 
 <style>
 .border {

@@ -1,8 +1,9 @@
 <script>
-    let selectedcategory = null; // Ensure the initial value is null
+    let { form } = $props();
+    let selectedcategory = $state(null);
   
     function updateSelectedCategory(categoryName) {
-      selectedcategory = categoryName; // Update the selected category
+      selectedcategory = categoryName;
     }
   </script>
 
@@ -286,3 +287,13 @@
     {/if}
   </form>
   
+
+{#if form?.success}
+  <div class="alert alert-success" role="alert">
+    Entry successfully created!
+  </div>
+{:else if form?.error}
+  <div class="alert alert-danger" role="alert">
+    {form.error.message}
+  </div>
+{/if}

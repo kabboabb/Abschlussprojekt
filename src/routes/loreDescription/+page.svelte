@@ -6,19 +6,16 @@
   import NpcCard from "$lib/components/NpcCard.svelte";
   import WeaponCard from "$lib/components/WeaponCard.svelte";
 
-  // State for the selected filter and search term
   let selectedFilter = $state('all');
   let searchQuery = $state('');
 
-  // Function to set the filter
   function setFilter(filter) {
     selectedFilter = filter;
   }
 
-  // Function to filter items based on the search query
   function filterData(array, query) {
     if (!query) {
-      return array; // If no query, return the full array
+      return array; 
     } else { 
       return array.filter(item =>
       Object.values(item).some(value =>
@@ -31,7 +28,6 @@
 <h1>Explore the Lore and get to know your Stuff</h1>
 <p><i>Data and Images from Kaggle</i></p>
 
-<!-- Filter Options -->
 <div style="margin-bottom: 20px;">
   <a class="btn btn-primary" href="../create" role="button">Add New Entry</a>
   <button onclick={() => setFilter('all')} class="btn btn-secondary">Show All</button>
@@ -42,7 +38,6 @@
   <button onclick={() => setFilter('items')} class="btn btn-secondary">Items</button>
 </div>
 
-<!-- Search Bar -->
 <div style="margin-bottom: 20px;">
   <input
     type="text"

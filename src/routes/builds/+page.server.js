@@ -9,6 +9,7 @@ export async function load() {
 
 export const actions = {
     create: async ({ request }) => {
+        try {
         let data = await request.formData();
         console.log(data);
 
@@ -49,5 +50,10 @@ export const actions = {
         };
 
         await db.createBuild(build); // Save the movie in the database
+        return {success: true};
+        
+    } catch (error) {
+        return {success: false, error};
     }
+}
 };
