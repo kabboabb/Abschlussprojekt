@@ -33,7 +33,7 @@
 
 <!-- Filter Options -->
 <div style="margin-bottom: 20px;">
-  <a class="btn btn-primary" href="../create" role="button">Add New Item</a>
+  <a class="btn btn-primary" href="../create" role="button">Add New Entry</a>
   <button onclick={() => setFilter('all')} class="btn btn-secondary">Show All</button>
   <button onclick={() => setFilter('weapons')} class="btn btn-secondary">Weapons</button>
   <button onclick={() => setFilter('armors')} class="btn btn-secondary">Armors</button>
