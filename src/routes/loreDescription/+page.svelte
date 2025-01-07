@@ -28,7 +28,7 @@
     }
   }
 </script>
-
+<h1>Explore the Lore and get to know your Stuff</h1>
 <p><i>Data and Images from Kaggle</i></p>
 
 <!-- Filter Options -->

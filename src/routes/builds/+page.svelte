@@ -119,6 +119,8 @@
   }
 </script>
 
+<h1>Create A New Build</h1>
+
 <form method="Post" action="?/create">
   <div class="mb-3">
     <label for="inputName" class="form-label">Build Name</label>

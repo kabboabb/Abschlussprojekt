@@ -5,7 +5,9 @@
       selectedcategory = categoryName; // Update the selected category
     }
   </script>
-  
+
+<h1>Create A New Entry</h1>
+
   <form method="POST" action="?/create">
     <div class="row g-3">
       <div class="col">

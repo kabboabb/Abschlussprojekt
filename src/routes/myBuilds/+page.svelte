@@ -4,6 +4,8 @@
   let { data } = $props();
 </script>
 
+<h1>Explore Your Builds</h1>
+
 <p><i> Bilder generiert mit ChatGPT und DALL-E</i></p>
 <a
   style="margin-bottom: 20px;"
