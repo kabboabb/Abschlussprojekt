@@ -34,6 +34,16 @@
   let weaponScalesArc = $state("");
   let weaponScalesFai = $state("");
 
+  function updateSelectedArmor(category, armorName) {
+    const armor = data.armor.find((armor) => armor.name === armorName);
+    if (category === "Helm") selectedHelm = armor;
+    if (category === "Leg Armor") selectedLegArmor = armor;
+    if (category === "Chest Armor") selectedChestArmor = armor;
+    if (category === "Gauntlets") selectedGauntlets = armor;
+
+    calculateTotalStats();
+  }
+
   function calculateTotalStats() {
     weight =
       phy =
@@ -59,7 +69,6 @@
     ];
 
     armors.forEach((armor) => {
-      if (armor) {
         weight += armor.weight;
         phy += armor.Phy;
         strike += armor.Strike;
@@ -74,14 +83,12 @@
         focus += armor.Focus;
         vitality += armor.Vitality;
         poise += armor.Poise;
-      }
     });
   }
 
   function updateWeaponStats(weaponName) {
     const weapon = data.weapons.find((weapon) => weapon.name === weaponName);
     selectedWeapon = weapon;
-    if (weapon) {
       weaponPhy = weapon.Phy;
       weaponMag = weapon.Mag;
       weaponFire = weapon.Fire;
@@ -93,17 +100,6 @@
       weaponScalesArc = weapon.scalesArc || "does not scale";
       weaponScalesInt = weapon.scalesInt || "does not scale";
       weaponScalesFai = weapon.scalesFai || "does not scale";
-    }
-  }
-
-  function updateSelectedArmor(category, armorName) {
-    const armor = data.armor.find((armor) => armor.name === armorName);
-    if (category === "Helm") selectedHelm = armor;
-    if (category === "Leg Armor") selectedLegArmor = armor;
-    if (category === "Chest Armor") selectedChestArmor = armor;
-    if (category === "Gauntlets") selectedGauntlets = armor;
-
-    calculateTotalStats();
   }
 </script>
 
@@ -129,7 +125,7 @@
           onchange={(e) => updateSelectedArmor("Helm", e.target.value)}
         >
           <option value="" disabled selected>Select an armor</option>
-          {#each data.armor as armor (armor._id)}
+          {#each data.armor as armor}
             {#if armor.category === "Helm"}
               <option value={armor.name}>{armor.name}</option>
             {/if}
@@ -143,7 +139,7 @@
           onchange={(e) => updateSelectedArmor("Leg Armor", e.target.value)}
         >
           <option value="" disabled selected>Select an armor</option>
-          {#each data.armor as armor (armor._id)}
+          {#each data.armor as armor}
             {#if armor.category === "Leg Armor"}
               <option value={armor.name}>{armor.name}</option>
             {/if}
@@ -157,7 +153,7 @@
           onchange={(e) => updateSelectedArmor("Chest Armor", e.target.value)}
         >
           <option value="" disabled selected>Select an armor</option>
-          {#each data.armor as armor (armor._id)}
+          {#each data.armor as armor}
             {#if armor.category === "Chest Armor"}
               <option value={armor.name}>{armor.name}</option>
             {/if}
@@ -174,7 +170,7 @@
           onchange={(e) => updateSelectedArmor("Gauntlets", e.target.value)}
         >
           <option value="" disabled selected>Select an armor</option>
-          {#each data.armor as armor (armor._id)}
+          {#each data.armor as armor}
             {#if armor.category === "Gauntlets"}
               <option value={armor.name}>{armor.name}</option>
             {/if}
