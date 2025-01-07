@@ -1,15 +1,21 @@
-<script>
-    let { data } = $props();
-    let npcs = data.npcs;
-</script>
-
-<a href="/loreDescription">Back</a>
-<div>
-    <img class="img-fluid" src={npcs.image} alt={npcs.name} />
+  <script>
+      let { data } = $props();
+      let npcs = data.npcs;
+  </script>
+  
+  
+  <div class="card">
+      <div class="card-header">
+          <h3>{npcs.name}</h3>
+      </div>
+      <div class="card-body">
+          <div class="text-center">
+              <img class="img" src={npcs.image} alt={npcs.name} />
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Location:</strong> {npcs.location}</li>
+              <li class="list-group-item"><strong>Role:</strong> {npcs.role}</li>
+          </ul>
+      </div>
   </div>
-<div>
-    <strong>Location: </strong> {npcs.location}
-  </div>
-  <div>
-    <strong>Role: </strong> {npcs.role}
-  </div>
+  <a href="/loreDescription" class="btn btn-primary">Back</a>

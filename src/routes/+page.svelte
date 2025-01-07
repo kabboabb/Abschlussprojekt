@@ -1,5 +1,5 @@
 <div class="titlepage">
-  <div class="hero">
+  <div class="eldenring">
     <h1>Welcome to Elden Ring Companion</h1>
     <p class="lead">Forge your path, master your builds, and unravel the lore of the Lands Between.</p>
     <a href="/builds" class="btn btn-primary btn-lg">Get Started</a>
@@ -12,12 +12,14 @@
       <div class="card feature-card">
         <img src="/titlepageitems.jpg" class="card-img-top" alt="Add Item" />
         <div class="card-body text-center">
+          <div class="card-body text-center">
           <h5 class="card-title">Add Items & Characters</h5>
           <p class="card-text">
             Contribute to your Elden Ring journey by adding items or creating
             custom characters.
           </p>
-          <a href="/add" class="btn btn-secondary">Add Now</a>
+        </div>
+          <a href="/add" class="btn btn-primary">Add Now</a>
         </div>
       </div>
     </div>
@@ -26,11 +28,13 @@
       <div class="card feature-card">
         <img src="/titlepagelore.jpg" class="card-img-top" alt="Lore" />
         <div class="card-body text-center">
-          <h5 class="card-title">Explore the Lore</h5>
+          <div class="card-body text-center">
+            <h5 class="card-title">Explore the Lore</h5>
           <p class="card-text">
             Dive deep into the rich and mysterious lore of the Lands Between.
           </p>
-          <a href="/loreDescription" class="btn btn-secondary">Learn More</a>
+        </div>
+          <a href="/loreDescription" class="btn btn-primary">Learn More</a>
         </div>
       </div>
     </div>
@@ -39,12 +43,14 @@
       <div class="card feature-card">
         <img src="/titlepagebuilds.jpg" class="card-img-top" alt="Build" />
         <div class="card-body text-center">
-          <h5 class="card-title">Create Builds</h5>
+          <div class="card-body text-center">
+            <h5 class="card-title">Create Builds</h5>
           <p class="card-text">
             Craft your ultimate build by selecting armor and weapons, and view
             combined stats.
           </p>
-          <a href="/builds" class="btn btn-secondary">Start Building</a>
+        </div>
+          <a href="/builds" class="btn btn-primary">Start Building</a>
         </div>
       </div>
     </div>
@@ -53,11 +59,13 @@
       <div class="card feature-card">
         <img src="/titlepagecomparison.jpg" class="card-img-top" alt="Compare" />
         <div class="card-body text-center">
-          <h5 class="card-title">Explore Your Builds Catalog</h5>
+          <div class="card-body text-center">
+            <h5 class="card-title">Explore Your Builds Catalog</h5>
           <p class="card-text">
             Compare your builds and see how they stack up against each other.
           </p>
-          <a href="/mybuilds" class="btn btn-secondary">See Build</a>
+        </div>
+          <a href="/mybuilds" class="btn btn-primary">See Build</a>
         </div>
       </div>
     </div>

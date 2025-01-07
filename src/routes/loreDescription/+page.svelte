@@ -55,40 +55,40 @@
 <div class="row">
   {#if selectedFilter === 'all' || selectedFilter === 'armors'}
     {#each filterData(data.armors, searchQuery) as armors}
-      <div class="col-sm-6 col-md-4 col-lg-3 mb-2 gx-2">
-        <ArmorCard {armors}></ArmorCard>
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4 gx-4">
+      <ArmorCard {armors}></ArmorCard>
       </div>
     {/each}
   {/if}
 
   {#if selectedFilter === 'all' || selectedFilter === 'weapons'}
     {#each filterData(data.weapons, searchQuery) as weapons}
-      <div class="col-sm-6 col-md-4 col-lg-3 mb-2 gx-2">
-        <WeaponCard {weapons}></WeaponCard>
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4 gx-4">
+      <WeaponCard {weapons}></WeaponCard>
       </div>
     {/each}
   {/if}
 
   {#if selectedFilter === 'all' || selectedFilter === 'bosses'}
     {#each filterData(data.bosses, searchQuery) as bosses}
-      <div class="col-sm-6 col-md-4 col-lg-3 mb-2 gx-2">
-        <BossCard {bosses}></BossCard>
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4 gx-4">
+      <BossCard {bosses}></BossCard>
       </div>
     {/each}
   {/if}
 
   {#if selectedFilter === 'all' || selectedFilter === 'npcs'}
     {#each filterData(data.npcs, searchQuery) as npcs}
-      <div class="col-sm-6 col-md-4 col-lg-3 mb-2 gx-2">
-        <NpcCard {npcs}></NpcCard>
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4 gx-4">
+      <NpcCard {npcs}></NpcCard>
       </div>
     {/each}
   {/if}
 
   {#if selectedFilter === 'all' || selectedFilter === 'items'}
     {#each filterData(data.items, searchQuery) as items}
-      <div class="col-sm-6 col-md-4 col-lg-3 mb-2 gx-2">
-        <ItemCard {items}></ItemCard>
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4 gx-4">
+      <ItemCard {items}></ItemCard>
       </div>
     {/each}
   {/if}

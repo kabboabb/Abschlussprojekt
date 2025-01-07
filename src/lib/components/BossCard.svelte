@@ -2,6 +2,7 @@
   let { bosses } = $props();
 </script>
 
+<div class="card">
 <div class="bosses-card">
   <div>
     <img class="img-fluid" src={bosses.image} alt={bosses.name} />
@@ -16,6 +17,7 @@
       </div>
     </div>
   </div>
+</div>
   <form method="post" action="?/delete">
     <input type="hidden" name="id" value={bosses._id} />
     <input type="hidden" name="collection" value="bosses" />
@@ -24,20 +26,34 @@
 </div>
 
 <style>
+  .card {
+    height: 550px;
+    background-color: #444;
+
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
   .bosses-card {
-    border: 1px solid #555;
     height: 100%;
     background-color: #444;
     color: white;
     border-radius: 10px;
-    overflow: hidden;
-    display: flex;
     flex-direction: column;
-  }
+    }
+
   .img-fluid {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    background-color: #302f2f;
   }
   .details {
     padding: 1em;
@@ -46,6 +62,7 @@
     flex-direction: column;
     justify-content: space-between;
   }
+
   .title {
     font-weight: bold;
     font-size: 1.2em;
@@ -58,7 +75,15 @@
   .title a:hover {
     text-decoration: underline;
   }
-  div {
-    margin-bottom: 0.5em;
-  }
+
+
+ 
+.btn-danger {
+  margin: 15px;
+}
+
+.btn-danger:hover {
+  background-color: #912530;
+}
+
 </style>

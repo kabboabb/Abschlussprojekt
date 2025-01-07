@@ -1,80 +1,49 @@
 <script>
-    let { data } = $props();
-    let weapons = data.weapons;
+  let { data } = $props();
+  let weapons = data.weapons;
 </script>
 
-<a href="/loreDescription">Back</a>
-<div>
-    <div>
-        <img class="img-fluid" src={weapons.image} alt={weapons.name} />
+<div class="card ">
+  <div class="card-header">
+      <h3>{weapons.name}</h3>
+  </div>
+  <div class="card-body">
+      <div class="text-center">
+          <img class="img" src={weapons.image} alt={weapons.name} />
       </div>
-    <strong>Description: </strong> {weapons.description}
+      <p><strong>Description:</strong> {weapons.description}</p>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Category:</strong> {weapons.category}</li>
+          <li class="list-group-item"><strong>Weight:</strong> {weapons.weight}</li>
+          <li class="list-group-item"><strong>Physical:</strong> {weapons.Phy}</li>
+          <li class="list-group-item"><strong>Magic:</strong> {weapons.Mag}</li>
+          <li class="list-group-item"><strong>Fire:</strong> {weapons.Fire}</li>
+          <li class="list-group-item"><strong>Lightning:</strong> {weapons.Ligt}</li>
+          <li class="list-group-item"><strong>Holy:</strong> {weapons.Holy}</li>
+          <li class="list-group-item"><strong>Critical:</strong> {weapons.Crit}</li>
+          <li class="list-group-item"><strong>Defence Physical:</strong> {weapons['Defence Phy']}</li>
+          <li class="list-group-item"><strong>Defence Magic:</strong> {weapons['Defence Mag']}</li>
+          <li class="list-group-item"><strong>Defence Fire:</strong> {weapons['Defence Fire']}</li>
+          <li class="list-group-item"><strong>Defence Lightning:</strong> {weapons['Defence Ligt']}</li>
+          <li class="list-group-item"><strong>Defence Holy:</strong> {weapons['Defence Holy']}</li>
+          <li class="list-group-item"><strong>Defence Critical:</strong> {weapons['Defence Crit']}</li>
+            {#if weapons.scalesStr}
+            <li class="list-group-item"><strong>Strength Scaling:</strong> {weapons.scalesStr}</li>
+          {/if}
+          {#if weapons.scalesDex}
+            <li class="list-group-item"><strong>Dexterity Scaling:</strong> {weapons.scalesDex}</li>
+          {/if}
+          {#if weapons.scalesInt}
+            <li class="list-group-item"><strong>Intelligence Scaling:</strong> {weapons.scalesInt}</li>
+          {/if}
+          {#if weapons.scalesArc}
+            <li class="list-group-item"><strong>Arcane Scaling:</strong> {weapons.scalesArc}</li>
+          {/if}
+          {#if weapons.scalesFai}
+            <li class="list-group-item"><strong>Faith Scaling:</strong> {weapons.scalesFai}</li>
+          {/if}
+      </ul>
   </div>
-  <div>
-    <strong>Category: </strong> {weapons.category}
-  </div>
-  <div>
-    <strong>Weight: </strong> {weapons.weight}
-  </div>
-  <div>
-    <strong>Physical: </strong> {weapons.Phy}
-  </div>
-  <div>
-    <strong>Magic: </strong> {weapons.Mag}
-  </div>
-  <div>
-    <strong>Fire: </strong> {weapons.Fire}
-  </div>
-  <div>
-    <strong>Lightning: </strong> {weapons.Ligt}
-  </div>
-  <div>
-    <strong>Holy: </strong> {weapons.Holy}
-  </div>
-  <div>
-    <strong>Critical: </strong> {weapons.Crit}
-  </div>
-  <div>
-    <strong>Defence Physical: </strong> {weapons['Defence Phy']}
-  </div>
-  <div>
-    <strong>Defence Magic: </strong> {weapons['Defence Mag']}
-  </div>
-  <div>
-    <strong>Defence Fire: </strong> {weapons['Defence Fire']}
-  </div>
-  <div>
-    <strong>Defence Lightning: </strong> {weapons['Defence Ligt']}
-  </div>
-  <div>
-    <strong>Defence Holy: </strong> {weapons['Defence Holy']}
-  </div>
-  <div>
-    <strong>Defence Critical: </strong> {weapons['Defence Crit']}
-  </div>
-  {#if weapons.scalesStr}
-    <div>
-      <strong>Strength Scaling: </strong> {weapons.scalesStr}
-    </div>
-  {/if}
-  {#if weapons.scalesDex}
-    <div>
-      <strong>Dexterity Scaling: </strong> {weapons.scalesDex}
-    </div>
-  {/if}
-  {#if weapons.scalesInt}
-    <div>
-      <strong>Intelligence Scaling: </strong> {weapons.scalesInt}
-    </div>
-  {/if}
-  {#if weapons.scalesArc}
-    <div>
-      <strong>Arcane Scaling: </strong> {weapons.scalesArc}
-    </div>
-  {/if}
-  {#if weapons.scalesFai}
-    <div>
-      <strong>Faith Scaling: </strong> {weapons.scalesFai}
-    </div>
-  {/if}
-  
+</div>
+<a href="/loreDescription" class="btn btn-primary">Back</a>
+

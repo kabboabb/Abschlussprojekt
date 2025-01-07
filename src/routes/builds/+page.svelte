@@ -252,7 +252,13 @@
       </div>
     </div>
     <div >
-    <button type="submit">Save Build</button>
+    <button class="btn btn-primary" type="submit">Save Build</button>
   </div>
   </div>
 </form>
+
+<style>
+.border {
+ width: 650px;
+}
+</style>

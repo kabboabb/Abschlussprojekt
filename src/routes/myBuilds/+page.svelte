@@ -13,7 +13,7 @@
 >
 <div class="row">
   {#each data.builds as builds}
-    <div class="col-sm-6 col-md-4 col-lg-3 mb-2 gx-2">
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-4 gx-4">
       <BuildsCard {builds}></BuildsCard>
     </div>
   {/each}
