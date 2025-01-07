@@ -250,6 +250,10 @@
             <label for="inputName" class="form-label">NPC Name</label>
             <input name="name" type="text" class="form-control" placeholder="Enter NPC name">
         </div>
+        <div class="col">
+            <label for="inputQuote" class="form-label">Quote</label>
+            <textarea name="quote" class="form-control" placeholder="Enter Quote"></textarea>
+        </div>
     </div>
     <div class="row g-3">
         <div class="col">

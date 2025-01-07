@@ -58,6 +58,7 @@ export const actions = {
         } else if (collection === "npc") {
             let npcs = {
                 name: data.get("name"),
+                quote: data.get("quote"),
                 location: data.get("location"),
                 role: data.get("role"),
             }

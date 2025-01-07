@@ -11,12 +11,15 @@
       <a href={"/loreDescription/npc/" + npcs._id}>{npcs.name}</a>
     </div>
     <div>
+      {#if !npcs.quote}
+        <div>
+          <strong>Quote: </strong> No quote available
+        </div>
+      {:else}
       <div>
-        <strong>Location: </strong> {npcs.location}
+        <strong>Quote: </strong> {npcs.quote}
       </div>
-      <div>
-        <strong>Role: </strong> {npcs.role}
-      </div>
+      {/if}
     </div>
   </div>
 </div>

@@ -13,6 +13,7 @@
               <img class="img" src={npcs.image} alt={npcs.name} />
           </div>
           <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Quote:</strong> {npcs.quote}</li>
               <li class="list-group-item"><strong>Location:</strong> {npcs.location}</li>
               <li class="list-group-item"><strong>Role:</strong> {npcs.role}</li>
           </ul>
