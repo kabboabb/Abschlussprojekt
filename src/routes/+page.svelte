@@ -13,7 +13,7 @@
         <img src="/titlepageitems.jpg" class="card-img-top" alt="Add Item" />
         <div class="card-body text-center">
           <div class="card-body text-center">
-          <h5 class="card-title">Add Items & Characters</h5>
+          <h5 class="card-title"> <strong> Add Items & Characters</strong></h5>
           <p class="card-text">
             Contribute to your Elden Ring journey by adding items or creating
             custom characters.
@@ -29,7 +29,7 @@
         <img src="/titlepagelore.jpg" class="card-img-top" alt="Lore" />
         <div class="card-body text-center">
           <div class="card-body text-center">
-            <h5 class="card-title">Explore the Lore</h5>
+            <h5 class="card-title"> <strong>Explore the Lore</strong></h5>
           <p class="card-text">
             Dive deep into the rich and mysterious lore of the Lands Between.
           </p>
@@ -44,7 +44,7 @@
         <img src="/titlepagebuilds.jpg" class="card-img-top" alt="Build" />
         <div class="card-body text-center">
           <div class="card-body text-center">
-            <h5 class="card-title">Create Builds</h5>
+            <h5 class="card-title"> <strong> Create Builds </strong></h5>
           <p class="card-text">
             Craft your ultimate build by selecting armor and weapons, and view
             combined stats.
@@ -60,7 +60,7 @@
         <img src="/titlepagecomparison.jpg" class="card-img-top" alt="Compare" />
         <div class="card-body text-center">
           <div class="card-body text-center">
-            <h5 class="card-title">Explore Your Builds Catalog</h5>
+            <h5 class="card-title"> <strong>Explore Your Builds Catalog</strong></h5>
           <p class="card-text">
             Compare your builds and see how they stack up against each other.
           </p>
