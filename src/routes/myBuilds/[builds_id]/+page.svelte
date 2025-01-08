@@ -42,7 +42,7 @@
       </div>
   </div>
   
-  <a href="/loreDescription" class="btn btn-primary mb-4">Back</a>
+  <a href="/myBuilds" class="btn btn-primary mb-4">Back</a>
 
     <style>
         .img {
